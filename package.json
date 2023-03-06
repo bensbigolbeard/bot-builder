@@ -1,0 +1,16 @@
+{
+  "name": "bot-builder",
+  "version": "0.0.1",
+  "description": "Collection of Discord Bot Utils",
+  "main": "index.js",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
