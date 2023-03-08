@@ -19,6 +19,14 @@
     "web3": "^1.8.1",
     "web3-utils": "^1.8.1"
   },
+  "dependenciesMeta": {
+    "bot-base": {
+      "injected": true
+    },
+    "contract-tools": {
+      "injected": true
+    }
+  },
   "devDependencies": {
     "@types/isomorphic-fetch": "^0.0.36",
     "@types/node": "^18.11.13",
