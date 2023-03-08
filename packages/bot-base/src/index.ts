@@ -4,9 +4,11 @@ import {
   CustomCommand,
   CustomSlashCommand,
   CustomSubCommand,
+  CustomSlashCommandWithAutocomplete,
   CustomSlashCommandWithSubCommands,
   fetchTokenMeta,
   tap,
+  ifElse,
 } from "./utils";
 
 export type {
@@ -14,7 +16,8 @@ export type {
   CustomCommand,
   CustomSlashCommand,
   CustomSubCommand,
+  CustomSlashCommandWithAutocomplete,
   CustomSlashCommandWithSubCommands,
 };
 
-export { fetchTokenMeta, tap };
+export { fetchTokenMeta, tap, ifElse };
