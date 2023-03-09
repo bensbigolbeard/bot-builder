@@ -9,38 +9,20 @@ import {
 } from "discord.js";
 
 /* Custom Command Interface */
-export type CustomCommand =
-  | CustomSlashCommand
-  | CustomSlashCommandWithSubCommands
-  | CustomSlashCommandWithAutocomplete;
 
-export interface CustomSlashCommand {
+export interface CustomCommand {
   name: string;
   handler: (interaction: ChatInputCommandInteraction) => void;
   command: RESTPostAPIChatInputApplicationCommandsJSONBody;
+  autocomplete?: (interaction: AutocompleteInteraction) => void;
+  subcommands?: Record<string, CustomSubcommand>;
 }
 
-export interface CustomSlashCommandWithAutocomplete {
-  name: string;
-  handler: (interaction: ChatInputCommandInteraction) => void;
-  autocomplete: (interaction: AutocompleteInteraction) => void;
-  command: RESTPostAPIChatInputApplicationCommandsJSONBody;
-}
-
-export interface CustomSlashCommandWithSubCommands {
-  name: string;
-  subCommands: Record<
-    string,
-    (interaction: ChatInputCommandInteraction) => void
-  >;
-  command: RESTPostAPIChatInputApplicationCommandsJSONBody;
-}
-
-export interface CustomSubCommand {
-  handler: (interaction: ChatInputCommandInteraction) => void;
-  subCommand: (
+export interface CustomSubcommand {
+  subcommand: (
     command: SlashCommandSubcommandBuilder
   ) => SlashCommandSubcommandBuilder;
+  handler: (interaction: ChatInputCommandInteraction) => void;
 }
 
 export interface CommandPlugin {
