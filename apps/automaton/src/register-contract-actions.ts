@@ -1,4 +1,3 @@
-import { CommandPlugin } from "bot-base";
 import { ContractPlugin, ContractAction } from "contract-tools";
 import { pipe } from "froebel";
 import { FastifyInstance } from "fastify";

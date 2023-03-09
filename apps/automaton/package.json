@@ -9,7 +9,7 @@
     "start": "NODE_ENV=production node dist/server.js"
   },
   "dependencies": {
-    "bot-base": "workspace:*",
+    "bot-utils": "workspace:*",
     "contract-tools": "workspace:*",
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3",
@@ -20,7 +20,7 @@
     "web3-utils": "^1.8.1"
   },
   "dependenciesMeta": {
-    "bot-base": {
+    "bot-utils": {
       "injected": true
     },
     "contract-tools": {

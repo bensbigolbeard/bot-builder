@@ -7,5 +7,5 @@ tokenGDrive.json
 
 cert/
 certs/
-bot-base-*
+bot-utils-*
 contract-tools-*

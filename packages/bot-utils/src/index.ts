@@ -1,14 +1,12 @@
 export * as CONSTANTS from "./constants";
-import {
+import { fetchTokenMeta, tap, ifElse } from "./utils";
+import type {
   CommandPlugin,
   CustomCommand,
   CustomSlashCommand,
   CustomSubCommand,
   CustomSlashCommandWithAutocomplete,
   CustomSlashCommandWithSubCommands,
-  fetchTokenMeta,
-  tap,
-  ifElse,
 } from "./utils";
 
 export type {

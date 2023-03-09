@@ -1,4 +1,4 @@
-import { CommandPlugin } from "bot-base";
+import { CommandPlugin } from "bot-utils";
 import { ContractPlugin } from "contract-tools";
 import { PLUGIN_REGISTRY as plugins } from "../plugin-registry.js";
 
