@@ -1,5 +1,5 @@
-import { CommandPlugin } from "bot-utils";
-import { ContractPlugin } from "contract-tools";
+import { CommandPlugin } from "bensbigolbeard-bot-utils";
+import { ContractPlugin } from "bensbigolbeard-contract-tools";
 import { PLUGIN_REGISTRY as plugins } from "../plugin-registry.js";
 
 // assigns the supported types, so types are available, even if not all of the plugin types are registered

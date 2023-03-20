@@ -1,4 +1,4 @@
-import { CommandPlugin } from "bot-utils";
+import { CommandPlugin } from "bensbigolbeard-bot-utils";
 import { FastifyInstance } from "fastify";
 import { PLUGIN_REGISTRY } from "./utils";
 

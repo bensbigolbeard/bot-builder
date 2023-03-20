@@ -1,4 +1,4 @@
-import { CommandPlugin } from "bot-utils";
+import { CommandPlugin } from "bensbigolbeard-bot-utils";
 import { PLUGIN_REGISTRY } from "./utils";
 
 export const commands = PLUGIN_REGISTRY.filter(

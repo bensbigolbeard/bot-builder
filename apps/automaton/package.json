@@ -1,16 +1,15 @@
 {
   "name": "automaton",
-  "private": true,
   "version": "0.0.0",
-  "main": "server.js",
+  "main": "dist/server.js",
   "scripts": {
     "dev": "nodemon",
     "build": "tsup src/**",
     "start": "NODE_ENV=production node dist/server.js"
   },
   "dependencies": {
-    "bot-utils": "workspace:*",
-    "contract-tools": "workspace:*",
+    "bensbigolbeard-bot-utils": "workspace:*",
+    "bensbigolbeard-contract-tools": "workspace:*",
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3",
     "fastify": "^4.10.2",
@@ -20,10 +19,10 @@
     "web3-utils": "^1.8.1"
   },
   "dependenciesMeta": {
-    "bot-utils": {
+    "bensbigolbeard-bot-utils": {
       "injected": true
     },
-    "contract-tools": {
+    "bensbigolbeard-contract-tools": {
       "injected": true
     }
   },
