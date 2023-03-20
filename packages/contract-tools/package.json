@@ -1,6 +1,6 @@
 {
-  "name": "contract-tools",
-  "version": "0.0.1",
+  "name": "bensbigolbeard-contract-tools",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "types": "src/index.ts",
   "scripts": {
