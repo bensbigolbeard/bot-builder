@@ -9,3 +9,4 @@ cert/
 certs/
 bot-utils-*
 contract-tools-*
+stats.json

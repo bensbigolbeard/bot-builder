@@ -1,6 +1,6 @@
 {
-  "name": "bot-utils",
-  "version": "0.0.1",
+  "name": "bensbigolbeard-bot-utils",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "types": "src/index.ts",
   "scripts": {
