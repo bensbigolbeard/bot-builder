@@ -1,13 +1,13 @@
-import { CommandPlugin } from "bensbigolbeard-bot-utils";
-import { PLUGIN_REGISTRY } from "./utils";
+import { CommandPlugin, CustomCommand } from "bensbigolbeard-bot-utils";
+import { AppConfig } from "./utils";
 
-export const commands = PLUGIN_REGISTRY.filter(
-  (plugin): plugin is CommandPlugin => "COMMANDS" in plugin
-).reduce(
-  (commandObj, command) => ({ ...commandObj, ...command.COMMANDS }),
-  {} as CommandPlugin["COMMANDS"]
-);
+export const getCommands = ({ PLUGIN_REGISTRY }: AppConfig) =>
+  PLUGIN_REGISTRY.filter(
+    (plugin): plugin is CommandPlugin => "COMMANDS" in plugin
+  ).reduce(
+    (commandObj, command) => ({ ...commandObj, ...command.COMMANDS }),
+    {} as CommandPlugin["COMMANDS"]
+  );
 
-export const COMMAND_REGISTRY = Object.values(commands).map(
-  (cmd) => cmd.command
-);
+export const getCommandRegistry = (commands: Record<string, CustomCommand>) =>
+  Object.values(commands).map((cmd) => cmd.command);

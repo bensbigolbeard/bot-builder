@@ -1,11 +1,10 @@
 {
-  "name": "automaton",
-  "version": "0.0.0",
-  "main": "dist/server.js",
+  "name": "bensbigolbeard-automaton",
+  "version": "0.0.1-alpha.1",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "nodemon",
-    "build": "tsup src/**",
-    "start": "NODE_ENV=production node dist/server.js"
+    "build": "tsup src/**"
   },
   "dependencies": {
     "bensbigolbeard-bot-utils": "workspace:*",

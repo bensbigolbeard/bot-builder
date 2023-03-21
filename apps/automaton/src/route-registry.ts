@@ -1,8 +1,11 @@
-import { CommandPlugin } from "bensbigolbeard-bot-utils";
-import { FastifyInstance } from "fastify";
-import { PLUGIN_REGISTRY } from "./utils";
+import type { CommandPlugin } from "bensbigolbeard-bot-utils";
+import type { FastifyInstance } from "fastify";
+import type { AppConfig } from "./utils";
 
-export const initRoutes = (app: FastifyInstance) =>
+export const initRoutes = (
+  app: FastifyInstance,
+  { PLUGIN_REGISTRY }: AppConfig
+) =>
   PLUGIN_REGISTRY.filter(
     (plugin): plugin is CommandPlugin => "COMMANDS" in plugin
   ).reduce(

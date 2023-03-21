@@ -1,9 +1,11 @@
 import "dotenv/config";
+import { AppConfig } from "./utils";
 import { Client, Events, GatewayIntentBits } from "discord.js";
-import { commands } from "./command-registry";
+import { getCommands } from "./command-registry";
 
-export const initClient = async () => {
+export const initClient = async ({ PLUGIN_REGISTRY }: AppConfig) => {
   const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+  const commands = getCommands({ PLUGIN_REGISTRY });
 
   client.on(Events.ClientReady, () => {
     console.log(`Logged in as ${client.user?.tag ?? "frickin nobody"}!`);
@@ -17,14 +19,14 @@ export const initClient = async () => {
       const cmnd = commands[command as keyof typeof commands]; // ugh, TS hates some iterators, apparently
       if (interaction.commandName === cmnd?.name) {
         if (interaction.isAutocomplete()) {
-          if ("autocomplete" in cmnd) {
+          if (cmnd?.autocomplete) {
             await cmnd.autocomplete(interaction);
           }
-        } else if ("subCommands" in cmnd) {
-          const subCommand = interaction.options.getSubcommand();
+        } else if (cmnd.subcommands) {
+          const subcommand = interaction.options.getSubcommand();
 
-          return Object.keys(cmnd.subCommands).includes(subCommand)
-            ? await cmnd.subCommands[subCommand](interaction)
+          return Object.keys(cmnd.subcommands).includes(subcommand)
+            ? await cmnd.subcommands[subcommand].handler(interaction)
             : undefined;
         } else {
           await cmnd.handler(interaction);

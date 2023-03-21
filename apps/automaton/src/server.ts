@@ -1,3 +1,4 @@
+import { PluginRegistry } from "./utils";
 import path from "path";
 import { pipe } from "froebel";
 import { fastify, FastifyError } from "fastify";
@@ -8,12 +9,21 @@ import { initCommands } from "./register-commands";
 
 const isProd = process.env.NODE_ENV === "production";
 
-const startServer = async () => {
+type BotBuilderConfig = {
+  pathToCerts: string;
+  pathToPlugins: string;
+};
+
+const startServer = async ({
+  pathToCerts,
+  pathToPlugins,
+}: BotBuilderConfig) => {
+  const PLUGIN_REGISTRY = require(pathToPlugins) as PluginRegistry;
   const app = fastify({
     logger: true,
     https: {
-      key: await readFile(path.join(__dirname, "../certs/key.pem")),
-      cert: await readFile(path.join(__dirname, "../certs/cert.pem")),
+      key: await readFile(path.join(pathToCerts, "key.pem")),
+      cert: await readFile(path.join(pathToCerts, "cert.pem")),
     },
   });
 
@@ -22,30 +32,31 @@ const startServer = async () => {
   });
 
   // initialize any plugin-defined routes (or app extensions)
-  initRoutes(app);
+  initRoutes(app, { PLUGIN_REGISTRY });
 
   return app;
 };
 
-try {
-  pipe(
-    /* @ts-ignore: no clue why it thinks this arg is type `never`. still works */
-    startServer,
-    (app) =>
-      app.listen(
-        { port: isProd ? 443 : 3333, host: "::" },
-        (err: FastifyError) => {
-          console.log(app.printRoutes());
-          if (err) {
-            app.log.error(err);
-            process.exit(1);
+export const startBot = (config: BotBuilderConfig) => {
+  try {
+    pipe(
+      /* @ts-ignore: no clue why it thinks this arg is type `never`. still works */
+      startServer,
+      (app) =>
+        app.listen(
+          { port: isProd ? 443 : 3333, host: "::" },
+          (err: FastifyError) => {
+            console.log(app.printRoutes());
+            if (err) {
+              app.log.error(err);
+              process.exit(1);
+            }
           }
-        }
-      ),
-
-    initClient,
-    initCommands
-  )();
-} catch (e) {
-  console.error("startupError:", e);
-}
+        ),
+      initClient,
+      initCommands
+    )(config);
+  } catch (e) {
+    console.error("startupError:", e);
+  }
+};

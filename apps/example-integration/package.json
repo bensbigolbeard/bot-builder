@@ -1,0 +1,16 @@
+{
+  "name": "example-integration",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Example application to show how to use the bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=production node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bensbigolbeard-cm-discord-integration": "^1.0.0"
+  }
+}

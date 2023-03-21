@@ -1,14 +1,20 @@
-import { ContractPlugin, ContractAction } from "contract-tools";
+import {
+  ContractPlugin,
+  ContractAction,
+  initContract,
+} from "bensbigolbeard-contract-tools";
 import { pipe } from "froebel";
 import { FastifyInstance } from "fastify";
-import { initContract } from "contract-tools";
-import { PLUGIN_REGISTRY } from "./utils";
+import { AppConfig } from "./utils";
 
 export const initTools = async (api: ContractAction) => {
   await pipe(initContract, api.handler)(api);
 };
 
-export const initContractTools = (app: FastifyInstance) => {
+export const initContractTools = (
+  app: FastifyInstance,
+  { PLUGIN_REGISTRY }: AppConfig
+) => {
   return Promise.all(
     PLUGIN_REGISTRY.filter(
       (plugin): plugin is ContractPlugin => "CONTRACT_ACTIONS" in plugin
