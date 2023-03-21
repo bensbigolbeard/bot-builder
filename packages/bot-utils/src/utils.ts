@@ -43,10 +43,11 @@ export function tap<T>(msg: string) {
   };
 }
 
-export function ifElse<T>(
+export function ifElse<T, U, V>(
   predicate: (arg: T) => boolean,
-  ifCond: (arg: T) => Promise<T> | T,
-  elseCond: (arg: T) => Promise<T> | T
+  ifCond: (arg: T) => U,
+  elseCond: (arg: T) => V
 ) {
-  return (data: T) => (predicate(data) ? ifCond(data) : elseCond(data));
+  return (data: T, ...args: unknown[]) =>
+    predicate(data) ? ifCond(data) : elseCond(data);
 }
