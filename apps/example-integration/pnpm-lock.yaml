@@ -2,11 +2,11 @@ lockfileVersion: 5.4
 
 specifiers:
   bensbigolbeard-automaton: workspace:*
-  bensbigolbeard-cm-discord-integration: ^1.0.0
+  bensbigolbeard-cm-discord-integration: ^1.0.1
 
 dependencies:
   bensbigolbeard-automaton: link:../automaton
-  bensbigolbeard-cm-discord-integration: 1.0.0
+  bensbigolbeard-cm-discord-integration: 1.0.1
 
 packages:
 
@@ -217,8 +217,8 @@ packages:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
     dev: false
 
-  /bensbigolbeard-bot-utils/1.0.0:
-    resolution: {integrity: sha512-VO640UGuvawSml8tingV28lQ25OFFkSlR3vi3lFyUSjjB8IlECaKNuZrb+L7H5wcd3wZjbSPJwB1M6P2/0xwpA==}
+  /bensbigolbeard-bot-utils/1.0.4:
+    resolution: {integrity: sha512-TjwQoWX/uRE37qxdtg1UFfIDmashRmW5gNq6msPcu4Rz7KEKU4eFQRltRqq/PV6fbxeyjG5SUs1RaPFtLwrZiQ==}
     dependencies:
       discord.js: 14.8.0
       fastify: 4.15.0
@@ -231,11 +231,11 @@ packages:
       - utf-8-validate
     dev: false
 
-  /bensbigolbeard-cm-discord-integration/1.0.0:
-    resolution: {integrity: sha512-WQsZfXOJgFlBNBFIy+GrsysjJHgHLIPoUuSM8bfoaoY7sXUxP0W2eqDcNboFBg4wZFlJ2t7z0vriSrIyxRvMzA==}
+  /bensbigolbeard-cm-discord-integration/1.0.1:
+    resolution: {integrity: sha512-MmHKQHYyQDonyXJgR6VM4bYY9sLEc/GK+opGDnx8ZdcoBkT0FaF8WsERE0nhQg53xTJtPH5rHQ35hV53Ih1bng==}
     dependencies:
       '@types/isomorphic-fetch': 0.0.36
-      bensbigolbeard-bot-utils: 1.0.0
+      bensbigolbeard-bot-utils: 1.0.4
       discord.js: 14.8.0
       dotenv: 16.0.3
       fastify: 4.15.0
