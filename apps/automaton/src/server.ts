@@ -36,12 +36,15 @@ const startServer = async ({
   return app;
 };
 
-export const startBot = (config: BotBuilderConfig) => {
+export const startBot = async (config: BotBuilderConfig) => {
   try {
     const PLUGIN_REGISTRY = require(config.pathToPlugins) as PluginRegistry;
+    if (!PLUGIN_REGISTRY) {
+      throw new Error("No plugin registry found.");
+    }
     const appConfig = { PLUGIN_REGISTRY };
 
-    pipe(
+    await pipe(
       /* @ts-ignore: no clue why it thinks this arg is type `never`. still works */
       startServer,
       (app) =>

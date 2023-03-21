@@ -17,5 +17,4 @@ export const initCommands =
     });
 
     console.log("Successfully reloaded application (/) commands.");
-    return config;
   };
