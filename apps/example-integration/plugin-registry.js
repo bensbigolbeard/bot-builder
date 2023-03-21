@@ -1,3 +1,5 @@
-const { PLUGIN: celmatePlugin } = require("cm-integration");
+const {
+  PLUGIN: celmatePlugin,
+} = require("bensbigolbeard-cm-discord-integration");
 
 module.exports = [celmatePlugin];

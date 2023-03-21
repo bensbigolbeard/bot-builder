@@ -1,9 +1,11 @@
 lockfileVersion: 5.4
 
 specifiers:
+  bensbigolbeard-automaton: workspace:*
   bensbigolbeard-cm-discord-integration: ^1.0.0
 
 dependencies:
+  bensbigolbeard-automaton: link:../automaton
   bensbigolbeard-cm-discord-integration: 1.0.0
 
 packages:

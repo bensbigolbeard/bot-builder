@@ -1,4 +1,4 @@
-import { PluginRegistry } from "./utils";
+import { PluginRegistry, AppConfig } from "./utils";
 import path from "path";
 import { pipe } from "froebel";
 import { fastify, FastifyError } from "fastify";
@@ -16,9 +16,8 @@ type BotBuilderConfig = {
 
 const startServer = async ({
   pathToCerts,
-  pathToPlugins,
-}: BotBuilderConfig) => {
-  const PLUGIN_REGISTRY = require(pathToPlugins) as PluginRegistry;
+  PLUGIN_REGISTRY,
+}: BotBuilderConfig & AppConfig) => {
   const app = fastify({
     logger: true,
     https: {
@@ -39,6 +38,9 @@ const startServer = async ({
 
 export const startBot = (config: BotBuilderConfig) => {
   try {
+    const PLUGIN_REGISTRY = require(config.pathToPlugins) as PluginRegistry;
+    const appConfig = { PLUGIN_REGISTRY };
+
     pipe(
       /* @ts-ignore: no clue why it thinks this arg is type `never`. still works */
       startServer,
@@ -53,9 +55,9 @@ export const startBot = (config: BotBuilderConfig) => {
             }
           }
         ),
-      initClient,
-      initCommands
-    )(config);
+      initClient(appConfig),
+      initCommands(appConfig)
+    )({ ...config, ...appConfig });
   } catch (e) {
     console.error("startupError:", e);
   }

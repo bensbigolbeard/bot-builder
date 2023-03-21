@@ -1,7 +1,7 @@
-import path from "path";
-import startServer from "bensbigolbeard-automaton";
+const path = require("path");
+const { startBot } = require("bensbigolbeard-automaton");
 
 const pathToCerts = path.join(__dirname, "certs");
 const pathToPlugins = path.join(__dirname, "plugin-registry.js");
 
-startServer({ pathToCerts, pathToPlugins });
+startBot({ pathToCerts, pathToPlugins });

@@ -1,6 +1,6 @@
 {
   "name": "example-integration",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Example application to show how to use the bot",
   "main": "index.js",
@@ -11,6 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bensbigolbeard-automaton": "workspace:*",
     "bensbigolbeard-cm-discord-integration": "^1.0.0"
+  },
+  "bensbigolbeard-automaton": {
+    "injected": true
   }
 }
