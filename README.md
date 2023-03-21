@@ -5,15 +5,36 @@ This is a set of base utility plugins and bot client server application to host 
 ## Project structure:
 - apps
   - automaton (Discord bot application)
+  - example-integration (Demonstrates how to initialize the bot)
 - packages
   - base-utils (definitions of plugin structures and utils)
   - contract-utils (plugin providing ethereum contract interation utils)
 
 ## Bot structure:
-The only thing you need to do once you've built your plugin is to register it in the `plugin-registry`.
-- automaton
-  - plugin-registry.js
-    - `PLUGIN_REGISTRY = [ /* custom plugins */ ];`
+The only thing you need to do once you've built your plugin(s) is to register them in a file that exports an array of your imported. You can then supply the bot with the path to this file:
+- `my-app`
+  - `my-plugin-registry.js`
+    - `module.exports = [ custom-plugin-1, custom-plugin-2 ];`
+  - `index.js`
+    - `startBot({ pathToPlugins: path.join(__dirname, 'my-plugin-registry.js') })`
+
+### Env Variables
+This project used `dot-env` to manage environmental secrets. To test locally, you need a `.env` file with the keys found in `.env-example`. 
+
+At the very least, you need to populate the `DISCORD_BOT_*` keys, but if you also need to utilize `contract-utils`, then you will need API keys for Etherscan and Alchemy.
+
+### SSL/TLS Certs
+If you want to run the bot in production with `https`, you need to generate your certs with these filenames:
+- `cert.pem`
+- `key.pem`
+
+Then you can supply the path to your certs directory:
+- `my-app`
+  - `certs`
+    - `cert.pem`
+    - `key.pem`
+  - `index.js`
+    - `startBot({ pathToPlugins, pathToCerts: path.join(__dirname, 'certs') })`
 
 # Bot-utils
 ## Plugin structure

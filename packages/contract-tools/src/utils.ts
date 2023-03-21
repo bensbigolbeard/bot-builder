@@ -38,7 +38,7 @@ export const initContract: (
       "?module=contract",
       "&action=getabi",
       `&address=${apiObj.address}`,
-      `&apikey=${process.env.ETHERSCAN}`
+      `&apikey=${process.env.ETHERSCAN_API_KEY}`
     )
   );
 
@@ -48,7 +48,7 @@ export const initContract: (
   if (!abiSourceString) throw new Error("no abi value");
   const abiSource: AbiItem[] = JSON.parse(abiSourceString);
 
-  const providerEndpoint = `${BASE_ALCHEMY_URL}${process.env.ALCHEMY_WS_ID}`;
+  const providerEndpoint = `${BASE_ALCHEMY_URL}${process.env.ALCHEMY_API_KEY}`;
   const web3 = new Web3(providerEndpoint);
 
   const contract = new web3.eth.Contract(abiSource, apiObj.address);

@@ -37,5 +37,5 @@ export const initClient =
       }
     });
 
-    await client.login(process.env.DISCORD_BOT);
+    await client.login(process.env.DISCORD_BOT_PUBLIC_KEY);
   };

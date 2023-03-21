@@ -3,7 +3,9 @@ import { AppConfig } from "./utils";
 import { REST, Routes } from "discord.js";
 import { getCommands, getCommandRegistry } from "./command-registry";
 
-const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_BOT);
+const rest = new REST({ version: "10" }).setToken(
+  process.env.DISCORD_BOT_PUBLIC_KEY
+);
 
 export const initCommands =
   ({ PLUGIN_REGISTRY }: AppConfig) =>
@@ -12,9 +14,12 @@ export const initCommands =
     const commands = getCommands({ PLUGIN_REGISTRY });
     const COMMAND_REGISTRY = getCommandRegistry(commands);
 
-    await rest.put(Routes.applicationCommands(process.env.SERVER_ID), {
-      body: COMMAND_REGISTRY,
-    });
+    await rest.put(
+      Routes.applicationCommands(process.env.DISCORD_BOT_SNOWFLAKE),
+      {
+        body: COMMAND_REGISTRY,
+      }
+    );
 
     console.log("Successfully reloaded application (/) commands.");
   };

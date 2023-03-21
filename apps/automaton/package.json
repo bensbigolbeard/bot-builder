@@ -1,6 +1,6 @@
 {
   "name": "bensbigolbeard-automaton",
-  "version": "0.0.1-alpha.2",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "scripts": {
     "dev": "nodemon",
