@@ -10,7 +10,7 @@ import { initCommands } from "./register-commands";
 const isProd = process.env.NODE_ENV === "production";
 
 type BotBuilderConfig = {
-  pathToCerts: string;
+  pathToCerts?: string;
   pathToPlugins: string;
 };
 
@@ -20,10 +20,14 @@ const startServer = async ({
 }: BotBuilderConfig & AppConfig) => {
   const app = fastify({
     logger: true,
-    https: {
-      key: await readFile(path.join(pathToCerts, "key.pem")),
-      cert: await readFile(path.join(pathToCerts, "cert.pem")),
-    },
+    ...(pathToCerts
+      ? {
+          https: {
+            key: await readFile(path.join(pathToCerts, "key.pem")),
+            cert: await readFile(path.join(pathToCerts, "cert.pem")),
+          },
+        }
+      : {}),
   });
 
   app.get("/", async (request, reply) => {
@@ -49,7 +53,7 @@ export const startBot = async (config: BotBuilderConfig) => {
       startServer,
       (app) =>
         app.listen(
-          { port: isProd ? 443 : 3333, host: "::" },
+          { port: isProd ? (config.pathToCerts ? 443 : 80) : 3333, host: "::" },
           (err: FastifyError) => {
             console.log(app.printRoutes());
             if (err) {

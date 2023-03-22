@@ -24,7 +24,7 @@ This project used `dot-env` to manage environmental secrets. To test locally, yo
 At the very least, you need to populate the `DISCORD_BOT_*` keys, but if you also need to utilize `contract-utils`, then you will need API keys for Etherscan and Alchemy.
 
 ### SSL/TLS Certs
-If you want to run the bot in production with `https`, you need to generate your certs with these filenames:
+By default, the bot will run on `http` in `production` mode on port `80`. If you want to run the bot in production with `https` on port `443`, you need to generate your certs with these filenames:
 - `cert.pem`
 - `key.pem`
 
