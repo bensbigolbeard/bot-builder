@@ -12,7 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "bensbigolbeard-automaton": "workspace:*",
-    "bensbigolbeard-cm-discord-integration": "^1.0.1"
+    "bensbigolbeard-cm-discord-integration": "1.0.3",
+    "dotenv": "^16.0.3"
   },
   "bensbigolbeard-automaton": {
     "injected": true
