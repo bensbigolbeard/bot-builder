@@ -15,14 +15,14 @@ export interface CustomCommand {
   handler: (interaction: ChatInputCommandInteraction) => void;
   command: RESTPostAPIChatInputApplicationCommandsJSONBody;
   autocomplete?: (interaction: AutocompleteInteraction) => void;
-  subcommands?: Record<string, CustomSubcommand>;
+  subcommands?: Record<string, CustomSubcommand["subcommand"]>;
 }
 
 export interface CustomSubcommand {
+  handler: (interaction: ChatInputCommandInteraction) => void;
   subcommand: (
     command: SlashCommandSubcommandBuilder
   ) => SlashCommandSubcommandBuilder;
-  handler: (interaction: ChatInputCommandInteraction) => void;
 }
 
 export interface CommandPlugin {
