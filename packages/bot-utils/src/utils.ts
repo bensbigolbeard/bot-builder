@@ -10,12 +10,17 @@ import {
 
 /* Custom Command Interface */
 
-export interface CustomCommand {
+export type CustomCommand = BasicCustomCommand | CustomCommandWithSubcommands;
+export interface BasicCustomCommand {
   name: string;
-  handler: (interaction: ChatInputCommandInteraction) => void;
   command: RESTPostAPIChatInputApplicationCommandsJSONBody;
+  handler: (interaction: ChatInputCommandInteraction) => void;
   autocomplete?: (interaction: AutocompleteInteraction) => void;
-  subcommands?: Record<string, CustomSubcommand["subcommand"]>;
+}
+export interface CustomCommandWithSubcommands {
+  name: string;
+  command: RESTPostAPIChatInputApplicationCommandsJSONBody;
+  subcommands: Record<string, CustomSubcommand["handler"]>;
 }
 
 export interface CustomSubcommand {
