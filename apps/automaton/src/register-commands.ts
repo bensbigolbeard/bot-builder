@@ -4,7 +4,7 @@ import { REST, Routes } from "discord.js";
 import { getCommands, getCommandRegistry } from "./command-registry";
 
 const rest = new REST({ version: "10" }).setToken(
-  process.env.DISCORD_BOT_PUBLIC_KEY
+  process.env.DISCORD_BOT_PRIVATE_KEY
 );
 
 export const initCommands =
