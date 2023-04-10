@@ -2,7 +2,7 @@ import {
   ContractPlugin,
   ContractAction,
   initContract,
-} from "bensbigolbeard-contract-tools";
+} from "bensbigolbeard-contract-utilities";
 import { pipe } from "froebel";
 import { FastifyInstance } from "fastify";
 import { AppConfig } from "./utils";

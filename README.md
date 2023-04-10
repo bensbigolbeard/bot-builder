@@ -7,8 +7,8 @@ This is a set of base utility plugins and bot client server application to host 
   - automaton (Discord bot application)
   - example-integration (Demonstrates how to initialize the bot)
 - packages
-  - base-utils (definitions of plugin structures and utils)
-  - contract-utils (plugin providing ethereum contract interation utils)
+  - bot-utils (definitions of plugin structures and utils)
+  - contract-utilities (plugin providing ethereum contract interation utils)
 
 ## Bot structure:
 The only thing you need to do once you've built your plugin(s) is to register them in a file that exports an array of your imported. You can then supply the bot with the path to this file:
@@ -21,7 +21,7 @@ The only thing you need to do once you've built your plugin(s) is to register th
 ### Env Variables
 This project used `dot-env` to manage environmental secrets. To test locally, you need a `.env` file with the keys found in `.env-example`. 
 
-At the very least, you need to populate the `DISCORD_BOT_*` keys, but if you also need to utilize `contract-utils`, then you will need API keys for Etherscan and Alchemy.
+At the very least, you need to populate the `DISCORD_BOT_*` keys, but if you also need to utilize `contract-utilities`, then you will need API keys for Etherscan and Alchemy.
 
 ### SSL/TLS Certs
 By default, the bot will run on `http` in `production` mode on port `80`. If you want to run the bot in production with `https` on port `443`, you need to generate your certs with these filenames:

@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "bensbigolbeard-bot-utils": "workspace:*",
-    "bensbigolbeard-contract-tools": "workspace:*",
+    "bensbigolbeard-contract-utilities": "workspace:*",
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3",
     "fastify": "^4.10.2",
@@ -21,7 +21,7 @@
     "bensbigolbeard-bot-utils": {
       "injected": true
     },
-    "bensbigolbeard-contract-tools": {
+    "bensbigolbeard-contract-utilities": {
       "injected": true
     }
   },

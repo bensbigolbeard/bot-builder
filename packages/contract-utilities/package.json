@@ -1,5 +1,5 @@
 {
-  "name": "bensbigolbeard-contract-tools",
+  "name": "bensbigolbeard-contract-utilities",
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "src/index.ts",
